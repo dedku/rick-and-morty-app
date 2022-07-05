@@ -2,6 +2,10 @@ import { extendTheme } from '@chakra-ui/react'
 
 const styles = {
   global: () => ({
+    fonts: {
+      heading: `'Oswald', sans-serif`,
+      body: `'Oswald', sans-serif`
+    },
     html: {
       scrollBehavior: 'smooth',
     },
