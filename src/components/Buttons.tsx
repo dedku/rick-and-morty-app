@@ -3,7 +3,7 @@ import { DeleteIcon, EditIcon} from '@chakra-ui/icons'
 
 const Buttons = () => {
     return (
-        <Box fontFamily='Oswald'>
+        <Box>
                 <HStack >
                     <Button bg='#0088DA' borderColor='#005183' leftIcon={<EditIcon/>} fontWeight='500' fontSize='14px' borderRadius={4} _hover={{ transition: '0.5s', bg: '#005183'}}>
                         Change Status

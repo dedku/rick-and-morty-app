@@ -23,6 +23,25 @@ const breakpoints = {
   '2xl': '96em',
 }
 
-const customeTheme = extendTheme({ styles, breakpoints })
+const components = {
+    Table: {
+      variants: {
+        mytable: {
+          td: {
+            color: 'black',
+            background: 'white',
+            borderBottom: "1px inset rgb(212, 212, 212)"
+          },
+          tr:{
+            color: 'gray',
+            background: 'white',
+            borderBottom: "1px inset rgb(212, 212, 212)"
+          },
+        }
+      }
+    }
+}
+
+const customeTheme = extendTheme({ styles, breakpoints, components })
 
 export default customeTheme
