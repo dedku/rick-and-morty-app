@@ -1,14 +1,13 @@
-import { Box, Container, HStack, Spacer, Heading, Center, Spinner, Text } from '@chakra-ui/react'
+import { Box, Container, Stack, Spacer, Heading, Center, Spinner, Text } from '@chakra-ui/react'
 import Font from '../lib/Font'
 import SearchAndFilters from './SearchAndFilters'
 import Buttons from './Buttons'
-import { FetchResponse } from '../lib/Types';
+import { FetchResponse } from '../lib/TypesAndInterfaces';
 import useFetch from '../hooks/useFetch';
+import TableContent from './Table'
 
 function App() {
-  const { data, statusContent, isPending, error }: FetchResponse = useFetch('https://rickandmortyapi.com/api/character')
-
-  if (!isPending) console.log(data);
+  const { data, isPending, error }: FetchResponse = useFetch('https://rickandmortyapi.com/api/character')
 
   return (
     <Box as='main'>
@@ -16,7 +15,6 @@ function App() {
       {error && <Container  maxW='container.lg'>
         <Center h='100vh'>
           <Box bg='red' p={12} rounded='lg'>
-            <Text>{statusContent}</Text>
             <Text>{error}</Text>
           </Box>
         </Center>
@@ -27,11 +25,12 @@ function App() {
         </Center>}
       {data && <Container maxW='container.lg' h='100%' pt={14} fontFamily='Oswald'>
         <Heading color='black' fontWeight='bold' fontSize={24} >Characters</Heading>
-        <HStack pt={8} h='40px'>
+        <Stack pt={8} pb={{sm:'16',md:'8'}} h='40px' direction={{sm: 'column', md:'row'}}>
           <SearchAndFilters />
           <Spacer />
           <Buttons />
-        </HStack>
+        </Stack>
+        <TableContent items={data.results}/>
       </Container>}
     </Box>
   )

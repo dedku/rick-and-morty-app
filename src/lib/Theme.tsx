@@ -25,18 +25,12 @@ const breakpoints = {
 
 const components = {
     Table: {
-      variants: {
+      colorSchema: {
         mytable: {
-          td: {
             color: 'black',
             background: 'white',
             borderBottom: "1px inset rgb(212, 212, 212)"
-          },
-          tr:{
-            color: 'gray',
-            background: 'white',
-            borderBottom: "1px inset rgb(212, 212, 212)"
-          },
+
         }
       }
     }

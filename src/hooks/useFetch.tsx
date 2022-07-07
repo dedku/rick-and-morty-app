@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react'
-import { FetchResponse } from '../lib/Types';
+import { FetchResponse } from '../lib/TypesAndInterfaces';
 
 const useFetch = (url: string): FetchResponse => {
     const [data, setData] = useState<any>();
-    const [statusContent, setStatusContent] = useState<String>('');
-    const [isPending, setIsPending] = useState<Boolean>(false);
+    const [isPending, setIsPending] = useState<boolean>(false);
     const [error, setError] = useState<any>();
 
     useEffect(() => {
         const abortCont = new AbortController();
         setIsPending(true)
-        setTimeout(() => {
           fetch(url, { signal: abortCont.signal })
           .then(res => {
             if (!res.ok) { // error coming back from server
@@ -31,14 +29,13 @@ const useFetch = (url: string): FetchResponse => {
               setIsPending(false);
               setError(err.message);
             }
-          })
-        }, 1000);
+          });
 
         // abort the fetch
         return () => abortCont.abort();
       }, [url])
 
-    return { data, statusContent, isPending, error }
+    return { data, isPending, error }
 }
 
 export default useFetch
