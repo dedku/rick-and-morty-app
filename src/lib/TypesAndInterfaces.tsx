@@ -4,6 +4,11 @@ export type FetchResponse = {
     error: any;
 }
 
+export type FetchData = {
+    [x: string]: any;
+    data: any;
+}
+
 export type CharacterProps = {
     id: number;
     name: string;
@@ -43,4 +48,9 @@ export type Data = {
 
 export type IconProps = {
     status: string,
+}
+
+
+export type Item = {
+  value: string[];
 }

@@ -18,7 +18,7 @@ const TableContent: React.FC<Items> = (props) => {
 
   const tableData = props.items.map((char) => ({
     checkbox:(
-        <Checkbox borderColor='gray'></Checkbox>
+            <Checkbox borderColor='gray'></Checkbox>
     ),
     name: (
       <Flex align="right" direction='column'>
@@ -39,7 +39,7 @@ const TableContent: React.FC<Items> = (props) => {
         <Flex align='right' direction='column'>
           {char.episode.slice(0,2).map((episode:any) =>
           {
-            const { data, isPending, error }: FetchResponse = useFetch(episode)
+            const { data }: FetchResponse = useFetch(episode)
             return <Chapter {...data}/>}
         )}
         </Flex>
@@ -51,7 +51,7 @@ const TableContent: React.FC<Items> = (props) => {
 
   const tableColumns = [
     {
-        Header: ( <Checkbox borderColor='gray'></Checkbox>),
+        Header: 'Select',
         accessor: "checkbox" as const
     },
     {

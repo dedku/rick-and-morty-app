@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Box, Container, Stack, Spacer, Heading, Center, Spinner, Text } from '@chakra-ui/react'
 import Font from '../lib/Font'
 import SearchAndFilters from './SearchAndFilters'
@@ -8,6 +9,7 @@ import TableContent from './Table'
 
 function App() {
   const { data, isPending, error }: FetchResponse = useFetch('https://rickandmortyapi.com/api/character')
+  const [filteredResults, setFilteredResults] = useState([]);
 
   return (
     <Box as='main'>
@@ -26,11 +28,11 @@ function App() {
       {data && <Container maxW='container.lg' h='100%' pt={14} fontFamily='Oswald'>
         <Heading color='black' fontWeight='bold' fontSize={24} >Characters</Heading>
         <Stack pt={8} pb={{sm:'16',md:'8'}} h='40px' direction={{sm: 'column', md:'row'}}>
-          <SearchAndFilters />
+          <SearchAndFilters data={data} setFilteredResults={setFilteredResults}/>
           <Spacer />
           <Buttons />
         </Stack>
-        <TableContent items={data.results}/>
+        <TableContent items={filteredResults}/>
       </Container>}
     </Box>
   )
