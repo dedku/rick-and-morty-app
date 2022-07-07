@@ -7,9 +7,10 @@ import { FetchResponse } from '../lib/TypesAndInterfaces';
 import useFetch from '../hooks/useFetch';
 import TableContent from './Table'
 
-function App() {
-  const { data, isPending, error }: FetchResponse = useFetch('https://rickandmortyapi.com/api/character')
-  const [filteredResults, setFilteredResults] = useState([]);
+async function App() {
+  const { data, isPending, error }: FetchResponse = await useFetch('https://rickandmortyapi.com/api/character')
+  const [filteredResults, setFilteredResults] = useState([])
+  const [search, setSearch] = useState('')
 
   return (
     <Box as='main'>
